@@ -1,25 +1,32 @@
-import logo from './logo.svg';
+import React from 'react';
+import About from './Components/about/About';
+import Row from './Components/Row/Row';
+import Contact from './Components/contact/ContactUs';
+import request from './request';
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+const App = () => {
+  return(
+    <div className="app">
+      {/* About section */}
+      <About />
+
+      {/* Row section */}
+      <Row
+        isLargeRow
+        title="NETFLIX ORIGINALS"
+        fetchUrl={request.fetchNetflixOriginals}
+      />
+      <Row title="Trending Now" fetchUrl={request.fetchTrending} />
+
+      <Row title="Top Rated" fetchUrl={request.fetchTopRated} />
+
+      {/* Contact section */}
+      <Contact />
     </div>
   );
-}
+};
+
 
 export default App;
